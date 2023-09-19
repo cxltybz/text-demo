@@ -10,11 +10,15 @@ class TodoItems extends Component {
         const { deleteItem, index } = this.props;
         deleteItem(index);
     }
+    shouldComponentUpdate(nextProps,nextState){
+        return nextProps.cotent !== this.props.cotent
+    }
     render() {
-        const { cotent, test } = this.props;
+        console.log("child render");
+        const { cotent } = this.props;
         return (
             <div onClick={this.handleClick}>
-                {test}-{cotent}
+             {cotent}
             </div>
         );
     }

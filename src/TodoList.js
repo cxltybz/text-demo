@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TodoItems from "./TodoItem";
 import Test from "./Test";
+import axios from 'axios';
 import "./style.css";
 
 class TodoList extends React.Component {
@@ -32,6 +33,8 @@ class TodoList extends React.Component {
             return { list };
         });
     }
+
+      
     // 获取列表子项
     getTodoItem() {
         return this.state.list.map((item, index) => (
@@ -43,21 +46,11 @@ class TodoList extends React.Component {
             />
         ));
     }
-    // 在组件即将被挂载到页面的时刻自动执行
-    componentWillMount() {
-        console.log("componentWillMount");
+    componentDidMount(){
+        axios('/api/todolist').then(()=>alert('succ')).catch(()=>alert('erro'))
     }
-    // 组件在被挂载到页面之后，自动被执行
-    componentDidMount() {
-        console.log("componentDidMount");
-    }
-    // 组件更新前执行，需要返回boolean值
-    shouldComponentUpdate() {
-        console.log("shouldComponentUpdate");
-        return true;
-    }
+
     render() {
-        console.log("render");
         return (
             <>
                 <div>
