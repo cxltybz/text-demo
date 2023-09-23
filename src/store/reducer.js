@@ -1,4 +1,9 @@
-import { CHANGE_INPUT_VALUE, ADD_ITEM, DELETE_ITEM } from './actionTypes';
+import {
+  CHANGE_INPUT_VALUE,
+  ADD_ITEM,
+  DELETE_ITEM,
+  AXIOS_LIST,
+} from './actionTypes';
 const defaultState = {
   inputValue: '123',
   list: [1, 2],
@@ -16,6 +21,9 @@ export default (state = defaultState, action) => {
       break;
     case DELETE_ITEM:
       newState.list.splice(action.value, 1);
+      break;
+    case AXIOS_LIST:
+      newState.list = action.list;
       break;
     default:
       break;
