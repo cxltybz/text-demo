@@ -4,10 +4,9 @@ import {
   getInputChangeAction,
   getAddItemAction,
   getDeleteItemAction,
-  getAxiosListAction,
+  getInitList,
 } from './store/actionCreators';
 import TodoListUI from './TodoListUI';
-import axios from 'axios';
 
 class TodoList extends Component {
   constructor(props) {
@@ -22,12 +21,8 @@ class TodoList extends Component {
   componentDidMount() {
     // 订阅store
     store.subscribe(this.handleStoreChange);
-    axios.get('/list.json').then((res) => {
-      const data = res.data;
-      const action = getAxiosListAction(data);
-      console.log(action);
-      store.dispatch(action);
-    });
+    const action = getInitList();
+    store.dispatch(action);
   }
   // 输入框输入事件
   handleInputChange(e) {
@@ -49,9 +44,6 @@ class TodoList extends Component {
     store.dispatch(action);
   }
 
-  // componentDidMount() {
-
-  // }
   render() {
     return (
       <TodoListUI

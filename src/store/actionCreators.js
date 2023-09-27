@@ -3,6 +3,7 @@ import {
   ADD_ITEM,
   DELETE_ITEM,
   AXIOS_LIST,
+  GET_INIT_LIST,
 } from './actionTypes';
 
 export const getInputChangeAction = (value) => ({
@@ -22,4 +23,8 @@ export const getDeleteItemAction = (value) => ({
 export const getAxiosListAction = (list) => ({
   type: AXIOS_LIST,
   list,
+});
+
+export const getInitList = () => ({
+  type: GET_INIT_LIST,
 });
