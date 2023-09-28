@@ -1,32 +1,24 @@
-import {
-  CHANGE_INPUT_VALUE,
-  ADD_ITEM,
-  DELETE_ITEM,
-  AXIOS_LIST,
-} from './actionTypes';
 const defaultState = {
-  inputValue: '123',
-  list: [1, 2],
+  inputValue: '',
+  list: [],
 };
 
 export default (state = defaultState, action) => {
   const newState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
-    case CHANGE_INPUT_VALUE:
+    case 'change_input_value':
       newState.inputValue = action.value;
       break;
-    case ADD_ITEM:
-      newState.list.push(newState.inputValue);
+    case 'add_item':
+      newState.list.push(state.inputValue);
       newState.inputValue = '';
       break;
-    case DELETE_ITEM:
+    case 'delete_item':
       newState.list.splice(action.value, 1);
-      break;
-    case AXIOS_LIST:
-      newState.list = action.list;
       break;
     default:
       break;
   }
+
   return newState;
 };
